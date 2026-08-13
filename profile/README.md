@@ -14,7 +14,7 @@ Where Open Engineering Packages defines and catalogs what packages should exist,
 
 ⸻
 
-Purpose
+## Purpose
 
 Modern engineering ecosystems depend on reusable components, but reuse only works when those components have clear boundaries, predictable interfaces, reliable versioning, and a consistent distribution mechanism.
 
@@ -37,7 +37,7 @@ It is to create dependable engineering building blocks.
 
 ⸻
 
-Package vs. Packages
+## Package vs. Packages
 
 The Open Engineering ecosystem deliberately separates definitions from implementations.
 
@@ -46,7 +46,7 @@ open-engineering-packages	Definitions, cataloging, contracts, conventions, and p
 open-engineering-package	Concrete implementations of those package definitions
 
 Conceptually:
-
+```
 Package Definition
        │
        ▼
@@ -68,17 +68,17 @@ packages.open-engineering.io
        │
        ▼
 Consumers
-
+```
 This separation allows a package contract to remain stable while implementations evolve independently.
 
 ⸻
 
-Repository Model
+## Repository Model
 
 The source repository acts as the implementation workspace and reference point for Open Engineering Package.
 
 A typical package implementation may follow a structure such as:
-
+```
 source/
 ├── README.md
 ├── LICENSE
@@ -90,11 +90,11 @@ source/
 ├── examples/
 └── .github/
     └── workflows/
-
+```
 The exact structure depends on the package technology and applicable Open Engineering conventions.
 
 For an npm-compatible package, for example:
-
+```
 source/
 ├── package.json
 ├── README.md
@@ -110,13 +110,13 @@ source/
     └── workflows/
         ├── test.yaml
         └── publish.yaml
-
+```
 ⸻
 
 Package Lifecycle
 
 A package moves through a deliberate lifecycle.
-
+```
 Define
   │
   ▼
@@ -148,53 +148,53 @@ Consume
                Improve
                   │
                   └──────► Version
-
-1. Define
+```
+### 1. Define
 
 The package begins with a definition maintained by Open Engineering Packages.
 
 The definition describes what the package is intended to provide without unnecessarily prescribing its implementation.
 
-2. Implement
+### 2. Implement
 
 The package definition is realized as executable source code.
 
-3. Validate
+### 3. Validate
 
 Metadata, structure, interfaces, schemas, and conventions are checked.
 
-4. Test
+### 4. Test
 
 Automated tests establish that the implementation satisfies its contract.
 
-5. Version
+### 5. Version
 
 A release receives an explicit version according to Open Engineering versioning conventions.
 
-6. Build
+### 6. Build
 
 The implementation is transformed into its distributable representation.
 
-7. Publish
+### 7. Publish
 
 The resulting artifact is published to an appropriate registry.
 
-8. Consume
+### 8. Consume
 
 Other Open Engineering repositories, applications, runtimes, tools, and compositions declare the package as a dependency.
 
 ⸻
 
-Package Registry
+## Package Registry
 
 Open Engineering packages are intended to be distributable through a dedicated package endpoint:
 
-packages.open-engineering.io
+`packages.open-engineering.io`
 
 This provides a stable ecosystem-level namespace independent of the underlying registry technology.
 
 Conceptually:
-
+```
 GitHub
   │
   │ source + releases
@@ -215,38 +215,39 @@ packages.open-engineering.io
   ├──► Runtimes
   ├──► Compositions
   └──► AI Engineering Agents
-
+```
 The public Open Engineering domain therefore becomes the stable interface while registry infrastructure can evolve behind it.
 
 ⸻
 
-npm-Compatible Packages
+## npm-Compatible Packages
 
 JavaScript and TypeScript packages may be distributed using the npm package model.
 
 For example:
 
-npm install @open-engineering/example
+`npm install @open-engineering/example`
 
 or, depending on the selected package manager:
-
+```
 pnpm add @open-engineering/example
 deno add npm:@open-engineering/example
+```
 
 A registry configuration can point package tooling toward:
 
-https://packages.open-engineering.io/
+`https://packages.open-engineering.io/`
 
 The precise registry implementation and publication conventions are defined separately so package source code does not become tightly coupled to registry infrastructure.
 
 ⸻
 
-Metadata
+## Metadata
 
 Every package should expose machine-readable metadata describing its place in the Open Engineering ecosystem.
 
 For example:
-
+```
 kind: Package
 metadata:
   name: example
@@ -261,19 +262,19 @@ spec:
   distribution:
     registry: packages.open-engineering.io
     ecosystem: npm
-
+```
 The authoritative schema and field names should follow the applicable Open Engineering repository and metadata conventions.
 
 This metadata allows packages to participate in the wider Open Engineering semantic graph.
 
 ⸻
 
-Packages as Elements
+## Packages as Elements
 
 Packages are not isolated artifacts.
 
 They can become dependencies of higher-level Open Engineering elements:
-
+```
 Package
    │
    ├──► Capability
@@ -291,7 +292,7 @@ Package
    ├──► Runtime
    │
    └──► Operating System
-
+```
 A small package may therefore become part of progressively larger compositions without needing to know those compositions in advance.
 
 That is an important property of the architecture:
@@ -300,32 +301,32 @@ Packages provide capabilities without owning the systems that compose them.
 
 ⸻
 
-Composition over Duplication
+## Composition over Duplication
 
 When functionality is useful to more than one implementation, extracting it into a package should be considered before copying it.
 
 Instead of:
-
+```
 Application A ── duplicated utility
 Application B ── duplicated utility
 Application C ── duplicated utility
-
+```
 prefer:
-
+```
               Open Engineering Package
                        │
              ┌─────────┼─────────┐
              ▼         ▼         ▼
         Application A  B         C
-
+```
 This creates a reusable engineering library rather than a growing collection of duplicated solutions.
 
 ⸻
 
-Relationship to the Open Engineering Ecosystem
+## Relationship to the Open Engineering Ecosystem
 
 Open Engineering Package participates in a larger chain of definition, implementation, composition, and execution.
-
+```
 Definitions
      │
      ▼
@@ -348,17 +349,17 @@ Runtimes
      │
      ▼
 Running Systems
-
+```
 Packages therefore occupy an important position between engineering knowledge and executable systems.
 
 ⸻
 
-Automation
+## Automation
 
 Package repositories should favor automated lifecycle management.
 
 A mature implementation should be able to perform:
-
+```
 commit
    ↓
 lint
@@ -376,12 +377,12 @@ release
 publish
    ↓
 index
-
+```
 CI/CD should make publishing repeatable rather than relying on manually assembled releases.
 
 ⸻
 
-AI-Native Engineering
+## AI-Native Engineering
 
 Packages should also be understandable by machines.
 
@@ -402,40 +403,40 @@ It becomes part of the machine-readable engineering landscape of Open Engineerin
 
 ⸻
 
-Design Principles
+## Design Principles
 
 Open Engineering Package follows the broader principles of Open Engineering:
 
-Definition before implementation
+### Definition before implementation
 Understand what should exist before deciding how to build it.
 
-Composition over duplication
+### Composition over duplication
 Reusable behavior belongs in reusable building blocks.
 
-Loose coupling
+### Loose coupling
 Packages should depend on explicit contracts rather than hidden implementation assumptions.
 
-Explicit interfaces
+### Explicit interfaces
 Consumers should know what a package promises.
 
-Independent versioning
+### Independent versioning
 Packages evolve at their own appropriate cadence.
 
-Automation by default
+### Automation by default
 Validation, testing, building, releasing, and publishing should be reproducible.
 
-Discoverability
+### Discoverability
 A package that cannot be found is difficult to reuse.
 
-Evidence-driven engineering
+### Evidence-driven engineering
 Tests, provenance, releases, and metadata provide evidence about what software actually is.
 
-Open by design
+### Open by design
 Packages should remain understandable, inspectable, portable, and interoperable wherever practical.
 
 ⸻
 
-Related Open Engineering Organizations
+## Related Open Engineering Organizations
 
 The package model connects naturally with:
 
@@ -454,7 +455,7 @@ Together they support a progression from intent to reusable implementation to ru
 
 ⸻
 
-The Goal
+## The Goal
 
 The goal of Open Engineering Package is simple:
 
