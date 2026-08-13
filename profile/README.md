@@ -41,10 +41,10 @@ It is to create dependable engineering building blocks.
 
 The Open Engineering ecosystem deliberately separates definitions from implementations.
 
-| Organization | Responsibility |
-| —- | —- |
-| open-engineering-packages	| Definitions, cataloging, contracts, conventions, and package blueprints |
-| open-engineering-package | Concrete implementations of those package definitions |
+| Organization | Responsibility |  
+| —- | —- |  
+| open-engineering-packages	| Definitions, cataloging, contracts, conventions, and package blueprints |  
+| open-engineering-package | Concrete implementations of those package definitions |  
 
 Conceptually:
 ```
